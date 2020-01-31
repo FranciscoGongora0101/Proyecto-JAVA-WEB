@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        </h:form>
+        Table: Avion <br></br>
+        TypedQuery <br></br>
+        #{avionController.findAll()}
+        <br></br>
+        NamedQuery <br></br>
+        #{avionController.findAll2()}
+        <br></br><br></br>
+        Table: Ciudad <br></br>
+        TypedQuery <br></br>
+        #{ciudadController.findAll()}
+        <br></br>
+        NamedQuery <br></br>
+        #{ciudadController.findAll2()}
+        <br></br><br></br>
+        Table: Estado <br></br>
+        TypedQuery <br></br>
+        #{estadoController.findAll()}
+        <br></br>
+        NamedQuery <br></br>
+        #{estadoController.findAll2()}
+        <br></br><br></br>
+        Table: Pais <br></br>
+        TypedQuery <br></br>
+        #{paisController.findAll()}
+        <br></br>
+        NamedQuery <br></br>
+        #{paisController.findAll2()}
+        <br></br><br></br>
+        Table: Vuelo <br></br>
+        TypedQuery <br></br>
+        #{vueloController.findAll()}
+        <br></br>
+        NamedQuery <br></br>
+        #{vueloController.findAll2()}
+        <br></br><br></br>
+
+        Con ID <br></br><br></br>
+        Table: Avion
+        TypedQuery <br></br>
+        #{avionController.findID()} 
+        <br></br>
+        NamedQuery <br></br>
+        #{avionController.findID2()}
+        <br></br>
+        Table: Estado
+        TypedQuery <br></br>
+        #{estadoController.findID()} 
+        <br></br>
+        NamedQuery <br></br>
+        #{estadoController.findID2()}
+        <br></br>        
+        Table: CIudad
+        TypedQuery <br></br>
+        #{ciudadController.findID()} 
+        <br></br>
+        NamedQuery <br></br>
+        #{ciudadController.findID2()}
+        <br></br>        
+        Table: Pais
+        TypedQuery <br></br>
+        #{paisController.findID()} 
+        <br></br>
+        NamedQuery <br></br>
+        #{paisController.findID2()}
+        <br></br>        
+        Table: Vuelo
+        TypedQuery <br></br>
+        #{vueloController.findID()} 
+        <br></br>
+        NamedQuery <br></br>
+        #{vueloController.findID2()}
+        <br></br><br></br>
+
+        Busquedas con parametros <br></br><br></br>
+        Table: Avion <br></br>
+        TypedQuery <br></br>
+        #{avionController.findNumVuelo()} 
+        <br></br>
+        NamedQuery <br></br>
+        #{avionController.findNumAvionyPasajeros()}
+        <br></br><br></br>
+        Table: Ciudad <br></br>
+        TypedQuery <br></br>
+        #{ciudadController.findEstado()} 
+        <br></br>
+        NamedQuery <br></br>
+        #{ciudadController.findPais()}
+        <br></br><br></br>
+        Table: Pais <br></br>
+        NamedQuery <br></br>
+        #{paisController.findNombre()}
+        <br></br><br></br>
+        Table: Vuelo <br></br>
+        TypedQuery <br></br>
+        #{vueloController.findNumVuelo()}
+        <br></br><br></br>
+
+
+        </h:form>
+
+    </h:body>
+</html>
+
