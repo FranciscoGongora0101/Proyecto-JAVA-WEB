@@ -5,10 +5,15 @@
  */
 package Facade;
 
+import Entity.Estado;
+import Entity.Vuelo;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -22,4 +27,31 @@ public class EstadoFacade {
     // "Insert Code > Add Business Method")
     @PersistenceContext(unitName = "Airport-ejbPU")
     private EntityManager em;
+
+    public List<Estado> findAll() {
+        TypedQuery<Estado> query;
+        query = em.createQuery("SELECT c FROM Estado c", Estado.class);
+        return query.getResultList();
+    }
+
+    public List<Estado> findAll2() {
+        Query query;
+        query = em.createNamedQuery("findEstado");
+        return query.getResultList();
+    }
+
+    public Estado findID(Long idParameter) {
+        TypedQuery<Estado> query;
+        query = em.createQuery("SELECT c FROM Ciudad c WHERE c.id=:id", Estado.class);
+        query.setParameter("id", idParameter);
+        return query.getSingleResult();
+    }
+
+    public Estado findID2(Long idParameter) {
+        Query query;
+        query = em.createNamedQuery("findIDNQE");
+        query.setParameter("id", idParameter);
+        return (Estado) query.getSingleResult();
+    }
+
 }

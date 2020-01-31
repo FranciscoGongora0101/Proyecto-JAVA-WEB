@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,11 +24,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Pais")
+@NamedQueries({
+@NamedQuery(name = "findPais", query = "SELECT c FROM Pais c"),
+@NamedQuery(name = "findIDNQP", query = "SELECT c FROM Pais c WHERE c.id=:id"),
+@NamedQuery(name = "findNombre", query = "SELECT c FROM Pais c WHERE c.Nombre=:nom")
+})
 public class Pais implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "Nombre", length = 35, nullable = false)
@@ -65,7 +72,7 @@ public class Pais implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Pais[ id=" + id + " ]";
+        return "Entity.Pais[ id=" + id + " ]" + "Nombre: " + getNombre();
     }
 
     /**

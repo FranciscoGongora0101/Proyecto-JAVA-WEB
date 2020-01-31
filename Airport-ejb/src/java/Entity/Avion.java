@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,11 +24,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Avion")
+@NamedQueries({
+@NamedQuery(name = "findAvion", query = "SELECT c FROM Avion c"),
+@NamedQuery(name = "findIDnq", query = "SELECT c FROM Avion c WHERE c.id=:id"),
+@NamedQuery(name = "findAvionyPasajeros", query = "SELECT c FROM Avion c WHERE c.Numero_Avion=:num AND c.Cantidad_Pasajeros=:pas")
+})
 public class Avion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "Numero_Avion", length = 20, nullable = false)
@@ -40,10 +47,9 @@ public class Avion implements Serializable {
 
     @Column(name = "Aerolinea", length = 35, nullable = false)
     private String Aerolinea;
-    
+
     @OneToMany(cascade = CascadeType.MERGE, mappedBy = "Avion")
-    private List <Vuelo> avionList;
-    
+    private List<Vuelo> avionList;
 
     public Long getId() {
         return id;
@@ -75,7 +81,7 @@ public class Avion implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Avion[ id=" + id + " ]";
+        return "[ id=" + id + ", Numero de Avion: " + getNumero_Avion() + ", Cantidad de Pasajeros: " + getCantidad_Pasajeros() + "]";
     }
 
     /**

@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/josefrancisco/Documents/NetBeansProjects/Airport/Airport-ejb/src/java/Entity/Vuelo.java</file>
+            <file>file:/C:/Users/josefrancisco/Documents/NetBeansProjects/Airport/Airport-ejb/src/java/Entity/Estado.java</file>
+            <file>file:/C:/Users/josefrancisco/Documents/NetBeansProjects/Airport/Airport-ejb/src/java/Facade/EstadoFacade.java</file>
+            <file>file:/C:/Users/josefrancisco/Documents/NetBeansProjects/Airport/Airport-ejb/src/java/Entity/Pais.java</file>
+            <file>file:/C:/Users/josefrancisco/Documents/NetBeansProjects/Airport/Airport-ejb/src/java/Facade/PaisFacade.java</file>
+            <file>file:/C:/Users/josefrancisco/Documents/NetBeansProjects/Airport/Airport-ejb/src/java/Facade/CiudadFacade.java</file>
+            <file>file:/C:/Users/josefrancisco/Documents/NetBeansProjects/Airport/Airport-ejb/src/java/Entity/Ciudad.java</file>
         </group>
     </open-files>
 </project-private>

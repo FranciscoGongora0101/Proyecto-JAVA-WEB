@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,11 +26,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Ciudad")
+@NamedQueries({
+@NamedQuery(name = "findCiudad", query = "SELECT c FROM Ciudad c"),
+@NamedQuery(name = "findIDNQC", query = "SELECT c FROM Ciudad c WHERE c.id=:id"),
+@NamedQuery(name = "findPaisC", query = "SELECT c FROM Ciudad c WHERE c.Estado.Pais.Nombre=:pais")
+})
 public class Ciudad implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "Nombre", length = 35, nullable = false)
@@ -74,7 +81,7 @@ public class Ciudad implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Ciudad[ id=" + id + " ]";
+        return "Entity.Ciudad[ id=" + id + " ]" + "Nombre: " + getNombre() + "Estado: " + getEstado().getNombre();
     }
 
     /**
@@ -89,6 +96,20 @@ public class Ciudad implements Serializable {
      */
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
+    }
+
+    /**
+     * @return the Estado
+     */
+    public Estado getEstado() {
+        return Estado;
+    }
+
+    /**
+     * @param Estado the Estado to set
+     */
+    public void setEstado(Estado Estado) {
+        this.Estado = Estado;
     }
 
 }

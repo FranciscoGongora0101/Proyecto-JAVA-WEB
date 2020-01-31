@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,11 +26,15 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Estado")
+@NamedQueries({
+@NamedQuery(name = "findEstado", query = "SELECT c FROM Estado c"),
+@NamedQuery(name = "findIDNQE", query = "SELECT c FROM Estado c WHERE c.id=:id")
+})
 public class Estado implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "Nombre", length = 35, nullable = false)
@@ -71,7 +77,7 @@ public class Estado implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Estado[ id=" + id + " ]";
+        return "Entity.Estado[ id=" + id + " ]" + "Nombre: " + getNombre() + "Pais: " + getPais().getNombre();
     }
 
     /**
@@ -86,6 +92,20 @@ public class Estado implements Serializable {
      */
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
+    }
+
+    /**
+     * @return the Pais
+     */
+    public Pais getPais() {
+        return Pais;
+    }
+
+    /**
+     * @param Pais the Pais to set
+     */
+    public void setPais(Pais Pais) {
+        this.Pais = Pais;
     }
 
 }

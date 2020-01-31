@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -23,11 +25,15 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "Vuelo")
+@NamedQueries({
+@NamedQuery(name = "findVuelo", query = "SELECT c FROM Vuelo c"),
+@NamedQuery(name = "findIDNQV", query = "SELECT c FROM Vuelo c WHERE c.id=:id")
+})
 public class Vuelo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "Numero_Vuelo", length = 20, nullable = false)
@@ -98,7 +104,7 @@ public class Vuelo implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Vuelo[ id=" + id + " ]";
+        return "Entity.Vuelo[ id=" + id + " ]" + "Numero de Vuelo: " + getNumero_Vuelo() + "Numero de Avion: " + getAvion().getNumero_Avion() + "Origen: " + getOrigen().getNombre() + "Destino:" + getDestino().getNombre();
     }
 
     /**
@@ -184,6 +190,48 @@ public class Vuelo implements Serializable {
      */
     public void setHora_Final_Vuelo(Date Hora_Final_Vuelo) {
         this.Hora_Final_Vuelo = Hora_Final_Vuelo;
+    }
+
+    /**
+     * @return the Avion
+     */
+    public Avion getAvion() {
+        return Avion;
+    }
+
+    /**
+     * @param Avion the Avion to set
+     */
+    public void setAvion(Avion Avion) {
+        this.Avion = Avion;
+    }
+
+    /**
+     * @return the Origen
+     */
+    public Ciudad getOrigen() {
+        return Origen;
+    }
+
+    /**
+     * @param Origen the Origen to set
+     */
+    public void setOrigen(Ciudad Origen) {
+        this.Origen = Origen;
+    }
+
+    /**
+     * @return the Destino
+     */
+    public Ciudad getDestino() {
+        return Destino;
+    }
+
+    /**
+     * @param Destino the Destino to set
+     */
+    public void setDestino(Ciudad Destino) {
+        this.Destino = Destino;
     }
 
 }
