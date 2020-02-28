@@ -60,4 +60,15 @@ public class VueloFacade {
         return query.getSingleResult();
     }
 
+    public void insert(Vuelo p) {
+        em.persist(p);
+    }
+
+    public void update(Vuelo p) {
+        em.merge(p);
+    }
+
+    public void delete(Vuelo p) {
+        em.remove(em.merge(p));
+    }
 }

@@ -108,4 +108,20 @@ public class Estado implements Serializable {
         this.Pais = Pais;
     }
 
+    /**
+     * @return the estadoList
+     */
+    public List<Ciudad> getEstadoList() {
+        return estadoList;
+    }
+
+    /**
+     * @param estadoList the estadoList to set
+     */
+    public void setEstadoList(List<Ciudad> estadoList) {
+        this.estadoList = estadoList;
+    }
+    
+    
+
 }

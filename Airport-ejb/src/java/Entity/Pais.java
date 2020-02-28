@@ -89,4 +89,20 @@ public class Pais implements Serializable {
         this.Nombre = Nombre;
     }
 
+    /**
+     * @return the paisList
+     */
+    public List<Estado> getPaisList() {
+        return paisList;
+    }
+
+    /**
+     * @param paisList the paisList to set
+     */
+    public void setPaisList(List<Estado> paisList) {
+        this.paisList = paisList;
+    }
+    
+    
+
 }

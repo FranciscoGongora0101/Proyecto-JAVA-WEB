@@ -67,4 +67,21 @@ public class CiudadFacade {
         query.setParameter("pais", Pais);
         return (Ciudad) query.getSingleResult();
     }
+
+    public void insert(Ciudad p) {
+        em.persist(p);
+    }
+
+    public void update(Ciudad p) {
+        em.merge(p);
+    }
+
+    public Ciudad find(Long id) {
+        return em.find(Ciudad.class, id);
+    }
+
+    public void delete(Ciudad p) {
+        em.remove(em.merge(p));
+    }
+
 }

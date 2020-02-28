@@ -54,4 +54,20 @@ public class EstadoFacade {
         return (Estado) query.getSingleResult();
     }
 
+    public Estado find(Long id) {
+        return em.find(Estado.class, id);
+    }
+
+    public void insert(Estado p) {
+        em.persist(p);
+    }
+
+    public void update(Estado p) {
+        em.merge(p);
+    }
+
+    public void delete(Estado p) {
+        em.remove(em.merge(p));
+    }
+
 }

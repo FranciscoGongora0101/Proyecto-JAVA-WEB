@@ -6,7 +6,6 @@
 package Facade;
 
 import Entity.Avion;
-import Entity.Vuelo;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
@@ -67,5 +66,21 @@ public class AvionFacade {
         query.setParameter("num", num_Avion);
         query.setParameter("pas", c_Pasajeros);
         return (Avion) query.getSingleResult();
+    }
+
+    public Avion find(Long id) {
+        return em.find(Avion.class, id);
+    }
+
+    public void insert(Avion p) {
+        em.persist(p);
+    }
+
+    public void update(Avion p) {
+        em.merge(p);
+    }
+    
+    public void delete(Avion p){
+        em.remove(em.merge(p));
     }
 }

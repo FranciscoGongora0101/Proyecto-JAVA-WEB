@@ -31,6 +31,20 @@ import javax.persistence.Table;
 })
 public class Avion implements Serializable {
 
+    /**
+     * @return the avionList
+     */
+    public List<Vuelo> getAvionList() {
+        return avionList;
+    }
+
+    /**
+     * @param avionList the avionList to set
+     */
+    public void setAvionList(List<Vuelo> avionList) {
+        this.avionList = avionList;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -112,4 +112,33 @@ public class Ciudad implements Serializable {
         this.Estado = Estado;
     }
 
+    /**
+     * @return the origenList
+     */
+    public List<Vuelo> getOrigenList() {
+        return origenList;
+    }
+
+    /**
+     * @param origenList the origenList to set
+     */
+    public void setOrigenList(List<Vuelo> origenList) {
+        this.origenList = origenList;
+    }
+
+    /**
+     * @return the destinoList
+     */
+    public List<Vuelo> getDestinoList() {
+        return destinoList;
+    }
+
+    /**
+     * @param destinoList the destinoList to set
+     */
+    public void setDestinoList(List<Vuelo> destinoList) {
+        this.destinoList = destinoList;
+    }
+
+    
 }

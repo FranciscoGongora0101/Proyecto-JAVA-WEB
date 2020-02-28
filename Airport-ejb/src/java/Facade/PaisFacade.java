@@ -60,4 +60,20 @@ public class PaisFacade {
         query.setParameter("nom", Nombre);
         return (Pais) query.getSingleResult();
     }
+
+    public Pais find(Long id) {
+        return em.find(Pais.class, id);
+    }
+
+    public void insert(Pais p) {
+        em.persist(p);
+    }
+
+    public void update(Pais p) {
+        em.merge(p);
+    }
+
+    public void delete(Pais p) {
+        em.remove(em.merge(p));
+    }
 }
