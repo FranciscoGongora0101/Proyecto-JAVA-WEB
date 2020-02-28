@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Aviones Edit</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputText value = "Numero de Avion: "/>
+            <h:inputText value = "#{avionController.avion.numero_Avion}" validator="numerosValidator"/>
+
+            <h:outputText value = "Cantidad de pasajeros: "/>
+            <h:inputText value = "#{avionController.avion.cantidad_Pasajeros}"/>
+
+            <h:outputText value = "Modelo: "/>
+            <h:inputText value = "#{avionController.avion.modelo}" validator="codigoValidator"/>
+
+            <h:outputText value = "Aerolinea: "/>
+            <h:inputText value = "#{avionController.avion.aerolinea}" validator="palabrasValidator"/>
+
+            <h:commandButton value="Guardar" action="#{avionController.update()}" />
+            <h:commandButton value="Regresar" action="/Aviones/avionesList" />
+        </h:form>
+    </h:body>
+</html>
+

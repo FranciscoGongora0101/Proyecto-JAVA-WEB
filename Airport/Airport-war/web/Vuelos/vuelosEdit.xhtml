@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Vuelos Edit</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputText value = "Numero de Vuelo: "/>
+            <h:inputText value = "#{vueloController.vuelo.numero_Vuelo}" validator="codigoValidator"/>
+
+            <h:outputText value = "Numero de Avion: "/>
+            <h:selectOneMenu value="#{vueloController.vuelo.avion}"
+                             required="true"
+                             requiredMessage="El Numero de avion es requerido">
+                <f:selectItem itemLabel="Seleccione un numero de avion"
+                              itemValue="0"
+                              noSelectionOption="true"/>
+                <f:selectItems value="#{avionController.findAll()}"
+                               var = "p"
+                               itemLabel="#{p.numero_Avion}"/>
+            </h:selectOneMenu>
+
+            <h:outputText value = "Origen: "/>
+            <h:selectOneMenu value="#{vueloController.vuelo.origen}"
+                             required="true"
+                             requiredMessage="El origen es requerido">
+                <f:selectItem itemLabel="Seleccione un estado"
+                              itemValue="0"
+                              noSelectionOption="true"/>
+                <f:selectItems value="#{ciudadController.findAll()}"
+                               var = "p"
+                               itemLabel="#{p.nombre}"/>
+            </h:selectOneMenu>
+            <h:outputText value = "Destino "/>
+            <h:selectOneMenu value="#{vueloController.vuelo.destino}"
+                             required="true"
+                             requiredMessage="El destino es requerido">
+                <f:selectItem itemLabel="Seleccione un estado"
+                              itemValue="0"
+                              noSelectionOption="true"/>
+                <f:selectItems value="#{ciudadController.findAll()}"
+                               var = "p"
+                               itemLabel="#{p.nombre}"/>
+            </h:selectOneMenu>
+
+            <h:outputText value = "Fecha Inicio del Vuelo:  "/>
+            <h:inputText value = "#{vueloController.vuelo.fecha_Inicio}">
+                <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="GMT-6"/>
+            </h:inputText>
+
+
+            <h:outputText value = "Fecha Fin del Vuelo: "/>
+            <h:inputText value = "#{vueloController.vuelo.fecha_Final_Vuelo}">
+                <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="GMT-6"/>
+            </h:inputText>
+
+            <h:outputText value = "Hora Inicio del Vuelo: "/>
+            <h:inputText value = "#{vueloController.vuelo.hora_Inicio_Vuelo}">
+                <f:convertDateTime type="time" pattern="hh:mm" timeZone="GMT-6"/>
+            </h:inputText>
+
+            <h:outputText value = "Hora Fin del Vuelo: "/>
+            <h:inputText value = "#{vueloController.vuelo.hora_Final_Vuelo}"> 
+                <f:convertDateTime type="time" pattern="hh:mm" timeZone="GMT-6"/>
+            </h:inputText>
+
+            <h:commandButton value="Guardar" action="#{vueloController.update()}"/>
+             <h:commandButton value="Regresar" action="/Vuelos/vuelosList" />
+        </h:form>
+    </h:body>
+</html>
+

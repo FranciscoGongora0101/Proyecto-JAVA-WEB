@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Aviones List</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:dataTable value ="#{avionController.findAll()}" var ="p" border ="5" >
+                <h:column>
+                    <f:facet name="header" >Numero de avion</f:facet>
+                        #{p.numero_Avion}
+                </h:column>
+                <h:column>
+                    <f:facet name="header" >Cantidad de pasajeros</f:facet>
+                        #{p.cantidad_Pasajeros}
+                </h:column>
+                <h:column>
+                    <f:facet name="header" >Modelo</f:facet>
+                        #{p.modelo}
+                </h:column>
+                <h:column>
+                    <f:facet name="header" >Aerolinea</f:facet>
+                        #{p.aerolinea}
+                </h:column>
+                <h:column>
+                    <f:facet name="header" >Editar</f:facet>
+                    <h:commandButton value="Editar" action="#{avionController.prepareEdit(p)}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header" >Eliminar</f:facet>
+                    <h:commandButton value="Eliminar" action="#{avionController.prepareDelete()}" rendered="#{!avionController.confirm}"/>
+                    <h:commandButton value="Si" rendered="#{avionController.confirm}" action="#{avionController.delete(p)}"/>
+                    <h:commandButton value="No" rendered="#{avionController.confirm}" action="#{avionController.mainClean('avionesList')}"/>
+                </h:column>
+            </h:dataTable>
+            <br></br>
+            <h:commandButton value="Agregar nuevo" action="#{avionController.mainClean('avionesAlta')}"/>
+            <h:commandButton value="Regresar" action="/index"/>
+        </h:form>
+    </h:body>
+</html>
+
